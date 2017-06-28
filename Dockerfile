@@ -18,5 +18,9 @@ RUN \
   apt-get install -y google-chrome-stable xvfb && \
   rm -rf /var/lib/apt/lists/*
 
+# Fix for the issue with Selenium, as described here:
+# https://github.com/SeleniumHQ/docker-selenium/issues/87
+ENV DBUS_SESSION_BUS_ADDRESS=/dev/null
+
 ## Nightwatch
 RUN npm install -g nightwatch
